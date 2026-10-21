@@ -40,3 +40,4 @@ The GitHub action will automatically build the ASIC files using [OpenLane](https
   - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
   - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
 my_4bit_cpu
+credit : based on wallento’s 4-bit toy CPU
