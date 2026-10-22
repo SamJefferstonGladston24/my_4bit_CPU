@@ -77,9 +77,10 @@ module cpu(
 
     always @(negedge clk) begin
         if (e) begin
-    accu <= clr ? 4'b0000 : (ld ? operand : alu);
+            accu <= clr ? 4'b0000 : (ld ? operand : alu);
+            carry <= c;
+        end
     end
-
     always @(*) begin
         if (sub) begin
             {c, alu} = {1'b0, accu} - {1'b0, operand};
