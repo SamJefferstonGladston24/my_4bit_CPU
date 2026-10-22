@@ -77,10 +77,7 @@ module cpu(
 
     always @(negedge clk) begin
         if (e) begin
-if (clr)
-    accu <= 4'b0000;
-else
-    accu <= ld ? operand : alu;
+    accu <= clr ? 4'b0000 : (ld ? operand : alu);
     end
 
     always @(*) begin
