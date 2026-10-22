@@ -54,8 +54,8 @@ module cpu(
     assign ind = (instruction_register == LDA_IND) ||
                  (instruction_register == ADD_IND) ||
                  (instruction_register == SUB_IND);
-    assign clr = (instruction_register == CLR);
     wire nop, lda, sta, add, sub, jmp, brz, brc, brn, ind, clr;
+    assign clr = (instruction_register == CLR);
 
 
     assign ld = lda;
