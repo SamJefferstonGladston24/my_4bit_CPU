@@ -23,6 +23,7 @@ module cpu(
     localparam BRZ = 4'b1001;
     localparam BRC = 4'b1010;
     localparam BRN = 4'b1011;
+    localparam CLR = 4'b1100;
 
 
     wire [3:0] data_bus = data_in[3:0];
@@ -54,10 +55,12 @@ module cpu(
     assign ind = (instruction_register == LDA_IND) ||
                  (instruction_register == ADD_IND) ||
                  (instruction_register == SUB_IND);
+    assign clr = (instruction_register == CLR);
+    wire nop, lda, sta, add, sub, jmp, brz, brc, brn, ind, clr;
 
 
     assign ld = lda;
-    assign e = lda | add | sub;
+    assign e = lda | add | sub | clr;
     assign k1 = ~((brz & Z) | (brc & C) | (brn & N) | k0);
     assign k0 = jmp;
     assign we = sta;
@@ -75,8 +78,7 @@ module cpu(
 
     always @(negedge clk) begin
         if (e) begin
-            accu <= ld ? operand : alu;
-            carry <= c;
+            accu <= clr ? 4'b0000 : (ld ? operand : alu);
         end
     end
 
