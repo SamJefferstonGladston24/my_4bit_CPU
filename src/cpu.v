@@ -40,7 +40,6 @@ module cpu(
         data_register <= data_bus;
     end
 
-    wire nop, lda, sta, add, sub, jmp, brz, brc, brn, ind;
     wire ld, e, k1, k0, m2, m1;
 
     assign nop = (instruction_register == NOP);
